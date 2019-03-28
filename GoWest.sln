@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleFloyd", "ConsoleFloy
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{35100771-2205-4DF8-A488-706473DC2BF4}"
 	ProjectSection(SolutionItems) = preProject
-		dijkstra.txt = dijkstra.txt
+		web\dijkstra.txt = web\dijkstra.txt
 		web\floyd.txt = web\floyd.txt
 		web\graph.png = web\graph.png
 		web\path.png = web\path.png
