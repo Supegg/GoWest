@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.438
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleDijkstra", "ConsoleDijkstra\ConsoleDijkstra.csproj", "{90ED8D4D-8A00-4524-B81C-E5DB3E6AD605}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleFloyd", "ConsoleFloyd\ConsoleFloyd.csproj", "{4F414D17-91D4-4DBD-BFAB-708E59059793}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{35100771-2205-4DF8-A488-706473DC2BF4}"
+	ProjectSection(SolutionItems) = preProject
+		dijkstra.txt = dijkstra.txt
+		web\floyd.txt = web\floyd.txt
+		web\graph.png = web\graph.png
+		web\path.png = web\path.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90ED8D4D-8A00-4524-B81C-E5DB3E6AD605}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90ED8D4D-8A00-4524-B81C-E5DB3E6AD605}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90ED8D4D-8A00-4524-B81C-E5DB3E6AD605}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90ED8D4D-8A00-4524-B81C-E5DB3E6AD605}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F414D17-91D4-4DBD-BFAB-708E59059793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F414D17-91D4-4DBD-BFAB-708E59059793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F414D17-91D4-4DBD-BFAB-708E59059793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F414D17-91D4-4DBD-BFAB-708E59059793}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9646E83-0CBE-4CB8-9EA2-13CC69D9A621}
+	EndGlobalSection
+EndGlobal
