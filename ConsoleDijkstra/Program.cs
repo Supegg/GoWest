@@ -5,7 +5,7 @@ namespace ConsoleDijkstra
 {
     class Program
     {
-        private const int INF = int.MaxValue;
+        private const int INF = 100000000;//单位10^-4m，单边最大长度10km，断不至于一条路径来回跑20次//int.MaxValue;
         private const int MaxV = 10;    //最大节点个数
 
         struct MGraph                    //图的定义
@@ -46,9 +46,8 @@ namespace ConsoleDijkstra
         static void Dijkstra(MGraph g, int v)
         {
             int[] dist = new int[MaxV]; //从源点v到其他各节点的最短路径长度
-            int[] path = new int[MaxV]; //path[i]表示从源点v到节点i之间最短路径的前驱节点
+            int[] prev = new int[MaxV]; //path[i]表示从源点v到节点i之间最短路径的前驱节点
             bool[] s = new bool[MaxV];    //选定的节点的集合
-            int mindis = INF;//辅助变量，暂存最新的最近距离
             int u = -1;//辅助变量,暂存最新的最近点索引
             int lastU = -1;//辅助变量，存储最后一次的最近点索引u。解决孤点/图问题，并减少计算
 
@@ -58,18 +57,18 @@ namespace ConsoleDijkstra
                 s[i] = false;                   //s[]置空  0表示i不在s集合中
                 if (g.edges[v, i] < INF)    //路径初始化
                 {
-                    path[i] = v;
+                    prev[i] = v;
                 }
                 else
-                {
-                    path[i] = -1;
+                { 
+                    prev[i] = -1;
                 }
             }
             s[v] = true;//源点编号v放入s中
 
             for (int i = 0; i < g.n; i++)
             {
-                mindis = INF;           //mindis置最小长度初值
+                int mindis = INF;
                 for (int j = 0; j < g.n; j++)//选取不在s中且具有最小距离的节点u
                 {
                     if (!s[j] && dist[j] < mindis)
@@ -92,7 +91,7 @@ namespace ConsoleDijkstra
                     if (!s[j] && g.edges[u,j] != INF && dist[u] + g.edges[u, j] < dist[j])   //如果通过u能到达j，并且比之前的路径更短
                     {
                         dist[j] = dist[u] + g.edges[u, j];//更新路径长度
-                        path[j] = u;//更新j的前驱节点
+                        prev[j] = u;//更新j的前驱节点
                     }
                 }
 
@@ -100,13 +99,13 @@ namespace ConsoleDijkstra
             }
 
             Console.Write("\t前驱节点表：", v);
-            foreach(int p in path)
+            foreach(int p in prev)
             {
                 Console.Write("{0,4}", p);
             }
             Console.WriteLine();
 
-            Display(dist, path, s, g.n, v); //输出最短路径
+            Display(dist, prev, s, g.n, v); //输出最短路径
         }
 
         /// <summary>
