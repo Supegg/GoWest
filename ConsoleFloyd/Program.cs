@@ -41,9 +41,19 @@ namespace ConsoleFloyd
             {
                 for (i = 0; i < g.n; i++)//起点
                 {
+                    if (i == k) //十字交叉法优化
+                    {
+                        continue;
+                    }
+
                     for (j = 0; j < g.n; j++)//终点
                     {
-                        if (dist[i, k] !=INF && dist[k, j] != INF && dist[i, k] + dist[k, j] < dist[i, j])//从i经过k到j的路径比从i到j的路径短
+                        if (j == i || j == k) //十字交叉法优化
+                        {
+                            continue;
+                        }
+
+                        if (dist[i, k] != INF && dist[k, j] != INF && dist[i, k] + dist[k, j] < dist[i, j])//从i经过k到j的路径比从i到j的路径短
                         {
                             dist[i, j] = dist[i, k] + dist[k, j];//更新路径长度
                             path[i, j] = path[k, j];//更新前驱节点
