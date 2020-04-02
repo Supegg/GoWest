@@ -48,8 +48,6 @@ namespace ConsoleDijkstra
             int[] dist = new int[MaxV]; //从源点v到其他各节点的最短路径长度
             int[] prev = new int[MaxV]; //path[i]表示从源点v到节点i之间最短路径的前驱节点
             bool[] s = new bool[MaxV];    //选定的节点的集合
-            int u = -1;//辅助变量,暂存最新的最近点索引
-            int lastU = -1;//辅助变量，存储最后一次的最近点索引u。解决孤点/图问题，并减少计算
 
             for (int i = 0; i < g.n; i++)
             {
@@ -60,7 +58,7 @@ namespace ConsoleDijkstra
                     prev[i] = v;
                 }
                 else
-                { 
+                {
                     prev[i] = -1;
                 }
             }
@@ -69,6 +67,7 @@ namespace ConsoleDijkstra
             for (int i = 0; i < g.n; i++)
             {
                 int mindis = INF;
+                int u = -1; //-1 表示没有可到达的最近节点
                 for (int j = 0; j < g.n; j++)//选取不在s中且具有最小距离的节点u
                 {
                     if (!s[j] && dist[j] < mindis)
@@ -77,9 +76,9 @@ namespace ConsoleDijkstra
                         mindis = dist[j];
                     }
                 }
-                if (u == lastU)//如没有找到新的最近点，即剩余都是无穷远点/孤点
+                if (u == -1)//如没有找到新的最近点，即剩余都是无穷远点/孤点
                 {
-                    break;//剪去不必要计算
+                    break;//孤点/图情景，剪去不必要的计算
                 }
                 else
                 {
@@ -88,18 +87,16 @@ namespace ConsoleDijkstra
 
                 for (int j = 0; j < g.n; j++)
                 {
-                    if (!s[j] && g.edges[u,j] != INF && dist[u] + g.edges[u, j] < dist[j])   //如果通过u能到达j，并且比之前的路径更短
+                    if (!s[j] && g.edges[u, j] != INF && dist[u] + g.edges[u, j] < dist[j])   //如果通过u能到达j，并且比之前的路径更短
                     {
                         dist[j] = dist[u] + g.edges[u, j];//更新路径长度
                         prev[j] = u;//更新j的前驱节点
                     }
                 }
-
-                lastU = u;//记录最后选择的点
             }
 
             Console.Write("\t前驱节点表：", v);
-            foreach(int p in prev)
+            foreach (int p in prev)
             {
                 Console.Write("{0,4}", p);
             }
@@ -124,7 +121,7 @@ namespace ConsoleDijkstra
                 if (s[i])  //路径存在
                 {
                     Console.Write("\t到{0}的最短路径长度为:{1}\t路径为:", i, dist[i]);
-                    
+
                     List<int> ps = new List<int>();
                     int k = i;
                     ps.Add(i);
@@ -136,7 +133,7 @@ namespace ConsoleDijkstra
 
                     Console.Write("{0}", v);
                     ps.Reverse();
-                    ps.RemoveAt(0);
+                    ps.RemoveAt(0); //ps 不包括起点
                     foreach (var p in ps)
                     {
                         Console.Write(",{0}", p);
@@ -145,9 +142,9 @@ namespace ConsoleDijkstra
                 }
                 else
                 {
-                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("\t从{0}到{1}不存在路径", v, i);
-                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
             }
         }

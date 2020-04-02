@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.438
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleDijkstra", "ConsoleDijkstra\ConsoleDijkstra.csproj", "{90ED8D4D-8A00-4524-B81C-E5DB3E6AD605}"
 EndProject
@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{35100771-2205-4DF8-A488-706473DC2BF4}"
 	ProjectSection(SolutionItems) = preProject
 		web\dijkstra.txt = web\dijkstra.txt
+		web\DijkstraProcess.gif = web\DijkstraProcess.gif
 		web\floyd.txt = web\floyd.txt
 		web\graph.png = web\graph.png
 		web\path.png = web\path.png

@@ -86,9 +86,9 @@ namespace ConsoleFloyd
                     {
                         if (i != j)
                         {
-                            Console.BackgroundColor = ConsoleColor.Yellow;
+                            Console.ForegroundColor = ConsoleColor.Magenta;
                             Console.WriteLine("\t从{0}到{1}不存在路径", i, j);
-                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.ForegroundColor = ConsoleColor.White;
                         }
                     }
                     else

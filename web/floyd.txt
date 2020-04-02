@@ -5,4 +5,6 @@ Floyd算法是一个经典的动态规划算法
 当我们遍历完所有节点k，dist(i,j)中记录的便是i到j的最短路径的距离。
 
 十字交叉法推断：i,j,k任意两个值相等时对路径无影响，可以加速计算
+
 https://blog.csdn.net/winbobob/article/details/38272679
+https://www.cnblogs.com/biyeymyhjob/archive/2012/07/31/2615833.html
