@@ -101,17 +101,17 @@ namespace ConsoleFloyd
                         do
                         {
                             k = path[i, k];
-                            ps.Add(k);
+                            if (k != j)
+                            {
+                                ps.Insert(0, k);
+                            }
                         } while (k != i);
 
-                        ps.Reverse();
-                        ps.RemoveAt(0);
-
-                        Console.Write("{0}", i);    //输出路径上的起点
                         foreach (var p in ps)
                         {
-                            Console.Write(",{0}", p);
+                            Console.Write("{0},", p);
                         }
+                        Console.Write("\b \b");
                         Console.WriteLine();
                     }
                 }

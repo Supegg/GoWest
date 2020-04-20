@@ -14,35 +14,6 @@ namespace ConsoleDijkstra
             public int n;             //节点数
         };
 
-        static void Main(string[] args)
-        {
-            MGraph g;
-            g.n = MaxV;
-
-            g.edges = new int[MaxV, MaxV]//初始化邻接矩阵
-            {
-                {  0,   3,   4,   7,   8, INF, INF, INF, INF, INF},
-                {  3,   0, INF,   5,   4, INF, INF, INF, INF, INF},
-                {  4, INF,   0, INF,   5, INF, INF, INF, INF, INF},
-                {  7,   5, INF,   0, INF,   4, INF, INF, INF, INF},
-                {  8,   4,   5, INF,   0,   3, INF, INF, INF, INF},
-                {INF, INF, INF,   4,   3,   0, INF, INF, INF, INF},
-                {INF, INF, INF, INF, INF, INF,   0,   4,   3, INF},
-                {INF, INF, INF, INF, INF, INF,   4,   0,   8, INF},
-                {INF, INF, INF, INF, INF, INF,   3,   8,   0, INF},
-                {INF, INF, INF, INF, INF, INF, INF, INF, INF,   0},
-            };
-
-            for (int v = 0; v < g.n; v++)
-            {
-                Console.WriteLine("从{0}出发...", v);
-                Dijkstra(g, v);
-                Console.WriteLine();
-            }
-
-            Console.ReadKey();
-        }
-
         static void Dijkstra(MGraph g, int v)
         {
             int[] dist = new int[MaxV]; //从源点v到其他各节点的最短路径长度
@@ -52,8 +23,8 @@ namespace ConsoleDijkstra
             for (int i = 0; i < g.n; i++)
             {
                 dist[i] = g.edges[v, i];    //距离初始化
-                s[i] = false;                   //s[]置空  0表示i不在s集合中
-                if (g.edges[v, i] < INF)    //路径初始化
+                s[i] = false;                   //s[]初始化false
+                if (g.edges[v, i] < INF)    //初始化前驱节点
                 {
                     prev[i] = v;
                 }
@@ -115,38 +86,67 @@ namespace ConsoleDijkstra
         /// <param name="v">起点</param>
         static void Display(int[] dist, int[] path, bool[] s, int n, int v)
         {
-            int i;
-            for (i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
             {
-                if (s[i])  //路径存在
+                if (s[j])  //路径存在
                 {
-                    Console.Write("\t到{0}的最短路径长度为:{1}\t路径为:", i, dist[i]);
+                    Console.Write("\t到{0}的最短路径长度为:{1}\t路径为:", j, dist[j]);
 
                     List<int> ps = new List<int>();
-                    int k = i;
-                    ps.Add(i);
+                    int k = j;
+                    ps.Add(j);
                     do
                     {
                         k = path[k];
-                        ps.Add(k);
+                        if (k != j)
+                        {
+                            ps.Insert(0, k);
+                        }
                     } while (k != v);
 
-                    Console.Write("{0}", v);
-                    ps.Reverse();
-                    ps.RemoveAt(0); //ps 不包括起点
                     foreach (var p in ps)
                     {
-                        Console.Write(",{0}", p);
+                        Console.Write("{0},", p);
                     }
+                    Console.Write("\b \b");
                     Console.WriteLine();
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("\t从{0}到{1}不存在路径", v, i);
+                    Console.WriteLine("\t从{0}到{1}不存在路径", v, j);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }
+        }
+
+        static void Main(string[] args)
+        {
+            MGraph g;
+            g.n = MaxV;
+
+            g.edges = new int[MaxV, MaxV]//初始化邻接矩阵
+            {
+                {  0,   3,   4,   7,   8, INF, INF, INF, INF, INF},
+                {  3,   0, INF,   5,   4, INF, INF, INF, INF, INF},
+                {  4, INF,   0, INF,   5, INF, INF, INF, INF, INF},
+                {  7,   5, INF,   0, INF,   4, INF, INF, INF, INF},
+                {  8,   4,   5, INF,   0,   3, INF, INF, INF, INF},
+                {INF, INF, INF,   4,   3,   0, INF, INF, INF, INF},
+                {INF, INF, INF, INF, INF, INF,   0,   4,   3, INF},
+                {INF, INF, INF, INF, INF, INF,   4,   0,   8, INF},
+                {INF, INF, INF, INF, INF, INF,   3,   8,   0, INF},
+                {INF, INF, INF, INF, INF, INF, INF, INF, INF,   0},
+            };
+
+            for (int v = 0; v < g.n; v++)
+            {
+                Console.WriteLine("从{0}出发...", v);
+                Dijkstra(g, v);
+                Console.WriteLine();
+            }
+
+            Console.ReadKey();
         }
     }
 }
