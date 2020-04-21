@@ -7,16 +7,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleDijkstra", "ConsoleD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleFloyd", "ConsoleFloyd\ConsoleFloyd.csproj", "{4F414D17-91D4-4DBD-BFAB-708E59059793}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{35100771-2205-4DF8-A488-706473DC2BF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAstar", "ConsoleAstar\ConsoleAstar.csproj", "{B33A64ED-768E-4DF2-9E37-55F7456E43E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{920B1987-CFD9-454B-9172-1AB9C4E47D0D}"
 	ProjectSection(SolutionItems) = preProject
-		web\dijkstra.txt = web\dijkstra.txt
-		web\DijkstraProcess.gif = web\DijkstraProcess.gif
-		web\floyd.txt = web\floyd.txt
-		web\graph.png = web\graph.png
-		web\path.png = web\path.png
+		doc\dijkstra.md = doc\dijkstra.md
+		doc\DijkstraProcess.gif = doc\DijkstraProcess.gif
+		doc\floyd.md = doc\floyd.md
+		doc\graph.png = doc\graph.png
+		doc\path.png = doc\path.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAstar", "ConsoleAstar\ConsoleAstar.csproj", "{B33A64ED-768E-4DF2-9E37-55F7456E43E6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "readme", "readme", "{2EA54504-5481-49DC-8799-B5026DC87258}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
