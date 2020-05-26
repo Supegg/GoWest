@@ -46,7 +46,7 @@ namespace ConsoleAstar
             PathNode parentNode = new PathNode
             {
                 Index = f,
-                Parent = f,
+                Parent = 0,
                 G = 0,
                 H = 0
             };
@@ -154,7 +154,7 @@ namespace ConsoleAstar
                 {
                     Console.Write("{0},", n.Index);
                 }
-                Console.Write("\b \b");
+                Console.Write("\b \b"); // take a step back
                 Console.WriteLine();
             }
             else

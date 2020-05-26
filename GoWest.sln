@@ -11,10 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAstar", "ConsoleAsta
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{920B1987-CFD9-454B-9172-1AB9C4E47D0D}"
 	ProjectSection(SolutionItems) = preProject
+		doc\Astar.md = doc\Astar.md
 		doc\dijkstra.md = doc\dijkstra.md
 		doc\DijkstraProcess.gif = doc\DijkstraProcess.gif
+		doc\dispatcher_brief.md = doc\dispatcher_brief.md
 		doc\floyd.md = doc\floyd.md
 		doc\graph.png = doc\graph.png
+		doc\multi-pilot_methods.png = doc\multi-pilot_methods.png
 		doc\path.png = doc\path.png
 	EndProjectSection
 EndProject
