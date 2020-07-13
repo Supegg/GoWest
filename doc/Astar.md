@@ -12,22 +12,16 @@
 
 ### 算法过程
 
-* 初始化open和close；
-* 将起点加入open中，并设置优先级为0（优先级最高）；
-* 如果open不为空，则从open中选取优先级最高的节点n：
-  * 如果节点n为终点，则：
-        *从终点开始逐步追踪parent节点，一直达到起点；
-        * 返回找到的结果路径，算法结束；
-  * 如果节点n不是终点，则：
-    * 将节点n从open中删除，并加入close中；
-    * 遍历节点n所有的邻近节点：
-      * 如果邻近节点m在close中，则：
-        * 跳过，选取下一个邻近节点
-      * 如果邻近节点m也不在open中，则：
-        * 设置节点m的parent为节点n
-        * 计算节点m的优先级
-        * 将节点m加入open中
-
+* 初始化open和close
+* 将起点加入open中，并设置代价为0
+* 不断从open中取出最小代价节点n，直到open为空
+  * 如果节点n已经在close中并且代价更大，continue，否则加入到close中
+  * 如果节点n为终点，找到终点，break
+  * 遍历n的子节点m
+    * 如果在open中并且代价更大，continue
+    * 如果在close中并且代价更大，continue
+    * 设置节点m的parent为节点n，加入到open
+* 如果找到路径，从终点开始逐步追踪parent节点，一直达到起点，**算法结束**
 ---
 
 [参考PathFinder](https://github.com/Supegg/PathFinder)

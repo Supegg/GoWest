@@ -69,10 +69,11 @@ namespace ConsoleAstar
                 {
                     continue; // 如果比close中的节点更远则跳过
                 }
+                close.Add(parentNode);
 
                 if (parentNode.Index == t)
                 {
-                    close.Add(parentNode);
+                    //close.Add(parentNode);
                     found = true;
                     break;
                 }
@@ -124,7 +125,8 @@ namespace ConsoleAstar
 
                     open.Push(newNode);
                 }
-                close.Add(parentNode);
+
+                //close.Add(parentNode);
             }
 
             if (found)
