@@ -56,6 +56,7 @@ namespace ConsoleAstar
             {
                 parentNode = open.Pop();
 
+                // 是否比close里的节点远
                 bool isFarther = false;
                 foreach (var node in close)
                 {
@@ -71,13 +72,14 @@ namespace ConsoleAstar
                 }
                 close.Add(parentNode);
 
+                // 如果找到了
                 if (parentNode.Index == t)
                 {
-                    //close.Add(parentNode);
                     found = true;
                     break;
                 }
 
+                // 遍历子节点
                 foreach (var point in map[parentNode.Index].Children)
                 {
                     PathNode newNode = new PathNode()
@@ -89,6 +91,7 @@ namespace ConsoleAstar
                     };
                     int newG = parentNode.G + point.Value; // it usually has a g-function 
 
+                    // 是否比open里的节点远
                     int openIndex = -1;
                     for (int i = 0; i < open.Count; i++)
                     {
@@ -103,6 +106,7 @@ namespace ConsoleAstar
                         continue; // 如果比open中的节点更远则跳过
                     }
 
+                    // 是否比close里的节点远
                     int closeIndex = -1;
                     for (int i = 0; i < close.Count; i++)
                     {
@@ -117,16 +121,13 @@ namespace ConsoleAstar
                         continue; // 如果比close中的节点更远则跳过
                     }
 
+                    // 加入到open
                     newNode.Parent = parentNode.Index;
                     newNode.G = newG;
-
                     //give me a heuristic function
                     newNode.H = 0;
-
                     open.Push(newNode);
                 }
-
-                //close.Add(parentNode);
             }
 
             if (found)
